@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/mayur/CPP/Song_indexer/build",
+  "command": "/usr/bin/c++  -I/home/mayur/CPP/Song_indexer/MetadataParser/include -I/usr/local/include/taglib -g -std=gnu++17 -o CMakeFiles/indexer.dir/MetadataParser/src/MetaDataparser.cpp.o -c /home/mayur/CPP/Song_indexer/MetadataParser/src/MetaDataparser.cpp",
+  "file": "/home/mayur/CPP/Song_indexer/MetadataParser/src/MetaDataparser.cpp",
+  "output": "CMakeFiles/indexer.dir/MetadataParser/src/MetaDataparser.cpp.o"
+},
+{
+  "directory": "/home/mayur/CPP/Song_indexer/build",
+  "command": "/usr/bin/c++  -I/home/mayur/CPP/Song_indexer/MetadataParser/include -I/usr/local/include/taglib -g -std=gnu++17 -o CMakeFiles/indexer.dir/MetadataParser/src/main.cpp.o -c /home/mayur/CPP/Song_indexer/MetadataParser/src/main.cpp",
+  "file": "/home/mayur/CPP/Song_indexer/MetadataParser/src/main.cpp",
+  "output": "CMakeFiles/indexer.dir/MetadataParser/src/main.cpp.o"
+}
+]
