@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/indexer.dir/MetadataParser/src/MetaDataparser.cpp.o CMakeFiles/indexer.dir/MetadataParser/src/main.cpp.o -o indexer  -Wl,-rpath,/usr/local/lib:/home/mayur/CPP/Song_indexer/build libdbmanager.so -lstdc++fs -ltag -lz -lz 

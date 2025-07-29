@@ -1,4 +1,0 @@
-/home/mayur/CPP/Song_indexer/build/CMakeFiles/dbmanager.dir
-/home/mayur/CPP/Song_indexer/build/CMakeFiles/indexer.dir
-/home/mayur/CPP/Song_indexer/build/CMakeFiles/edit_cache.dir
-/home/mayur/CPP/Song_indexer/build/CMakeFiles/rebuild_cache.dir
