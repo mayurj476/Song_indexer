@@ -2,6 +2,19 @@
 #include <vector>
 using namespace std;
 
+string DbInserter::escapeSingleQuotes(const string &str)
+{
+    std::string escaped;
+    for (char c : str) {
+        if (c == '\'') {
+            escaped += "''"; // SQL escaping
+        } else {
+            escaped += c;
+        }
+    }
+    return escaped;
+}
+
 DbInserter *DbInserter::getDbInserter(string path)
 {
     lock_guard<mutex> lg(m_Imutex);
@@ -48,9 +61,9 @@ void DbInserter::closeDatabase()
 void DbInserter::insertSongdetail(tableData &t)
 {
 
-    string sql("INSERT or REPLACE INTO Audio VALUES(" + to_string(t.Id) + ",'" + t.trackPath + "','" +
-               t.trackName + "','" + t.FileName + "','" + t.artist + "','" + t.genre +
-               "','" + t.album + "'," + to_string(t.year) + ",'" + t.albumart + "'," +
+    string sql("INSERT or REPLACE INTO Audio VALUES(" + to_string(t.Id) + ",'" + escapeSingleQuotes(t.trackPath) + "','" +
+               escapeSingleQuotes(t.trackName) + "','" + escapeSingleQuotes(t.FileName) + "','" + escapeSingleQuotes(t.artist) + "','" + escapeSingleQuotes(t.genre) +
+               "','" + escapeSingleQuotes(t.album) + "'," + to_string(t.year) + ",'" + escapeSingleQuotes(t.albumart) + "'," +
                to_string(t.length) + "," + to_string(t.isFav) + ");");
     if (m_dbConnection)
     {

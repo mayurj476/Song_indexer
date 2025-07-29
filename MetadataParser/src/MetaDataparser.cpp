@@ -92,4 +92,27 @@ void MetadataParser::startIndexing(string path)
             getPseudoMetaData(entry.path().c_str());
         }
     }
+    cout << "Indexing completed.\n";
+    m_indexingComplete= true;
+    m_cv.notify_all(); // Notify that indexing is complete
+
+}
+
+void MetadataParser::listaudioFiles()
+{
+    vector<songinfo> songs;
+    unique_lock<mutex> lock(m_mutex);
+    m_cv.wait(lock, [this] { return m_indexingComplete; }); // Wait
+    m_dbSelector->getAllSongs(songs); 
+
+    cout << "Listing all audio files:"<<songs.size() << " files found." << endl;
+        for (const auto &song : songs)
+        {
+            cout << "Full Path: " << song.fullpath << endl;
+            cout << "Track Name: " << song.trackname << endl;
+            cout << "File Name: " << song.fileName << endl;
+            cout << "Album Art: " << song.albumart << endl;
+            cout << "------------------------" << endl;
+        }
+   
 }

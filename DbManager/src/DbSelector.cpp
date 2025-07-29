@@ -33,18 +33,18 @@ void DbSelector::getAllSongs(vector<songinfo> &songs)
    int result = sqlite3_prepare_v2(m_dbConnection, query.c_str(), static_cast<int>(query.length()), &statement, nullptr);
    if (result == SQLITE_OK)
    {
-      while ((result != SQLITE_DONE) && (result != SQLITE_ERROR))
+      while ((result = sqlite3_step(statement)) == SQLITE_ROW)
       {
-         result = sqlite3_step(statement);
+        // result = sqlite3_step(statement);
 
-         if (result == SQLITE_ROW)
-         {
+       
+         
             song.fullpath = reinterpret_cast<const char *>(sqlite3_column_text(statement, 0));
             song.trackname = reinterpret_cast<const char *>(sqlite3_column_text(statement, 1));
             song.fileName = reinterpret_cast<const char *>(sqlite3_column_text(statement, 2));
             song.albumart = reinterpret_cast<const char *>(sqlite3_column_text(statement, 3));
             songs.push_back(song);
-         }
+         
       }
    }
    else

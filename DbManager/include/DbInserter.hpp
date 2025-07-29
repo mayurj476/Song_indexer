@@ -26,6 +26,7 @@ private:
 
     DbInserter(DbInserter &&) = delete;
     DbInserter &operator=(DbInserter &&) = delete;
+    string escapeSingleQuotes(const string &str);
 
 public:
     static DbInserter *getDbInserter(string path);
