@@ -11,8 +11,8 @@ using namespace std;
 
 class MetadataParser {
 private:
-unique_ptr<IDbFactory>m_dbInserter;
-unique_ptr<IDbFactory>m_dbSelector;
+IDbFactory* m_dbInserter;
+IDbFactory* m_dbSelector;
 
 bool isValidFile(string path);
 

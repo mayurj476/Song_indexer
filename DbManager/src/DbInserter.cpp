@@ -40,7 +40,7 @@ bool DbInserter::openDatabase(string path)
 };
 void DbInserter::closeDatabase()
 {
-
+    cout << "DbInserter Closing database\n";
     sqlite3_close(m_dbConnection);
     m_dbConnection = nullptr;
 };
@@ -49,9 +49,9 @@ void DbInserter::insertSongdetail(tableData &t)
 {
 
     string sql("INSERT or REPLACE INTO Audio VALUES(" + to_string(t.Id) + ",'" + t.trackPath + "','" +
-        t.trackName + "','" + t.FileName + "','" + t.artist + "','" + t.genre +
-        "','" + t.album + "'," + to_string(t.year) + ",'" + t.albumart + "'," +
-        to_string(t.length) + "," + to_string(t.isFav) + ");");
+               t.trackName + "','" + t.FileName + "','" + t.artist + "','" + t.genre +
+               "','" + t.album + "'," + to_string(t.year) + ",'" + t.albumart + "'," +
+               to_string(t.length) + "," + to_string(t.isFav) + ");");
     if (m_dbConnection)
     {
         executequery(sql);
@@ -105,6 +105,15 @@ void DbInserter::toggeleTrackFavstate(const int id, bool state)
     string query = {"UPDATE OR IGNORE Audio Set isFav=" + to_string(state) + "WHERE Id=" + to_string(id)};
 
     executequery(query);
+}
+
+void DbInserter::destroyInstance()
+{
+    if (m_DbIserter != nullptr)
+    {
+        delete m_DbIserter;
+        m_DbIserter = nullptr;
+    }
 }
 
 DbInserter *DbInserter::m_DbIserter = nullptr;

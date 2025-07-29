@@ -17,7 +17,6 @@ private:
     string m_dbPath;
     sqlite3 *m_dbConnection;
     DbSelector(string path);
-    ~DbSelector();
 
     DbSelector(const DbSelector &) = delete;
     DbSelector &operator=(const DbSelector &) = delete;
@@ -27,12 +26,15 @@ private:
 
 public:
     static DbSelector *getDbSelector(string path);
+    static void destroyInstance();
 
     bool openDatabase(string path) override;
     void closeDatabase() override;
     void executequery(string query) override;
 
-    void getTrackId(string songpath, int &Id)override;
-    void getAllSongs(vector<songinfo> &songs)override;
-    string getTrackPath(const string &songName)override;
+    void getTrackId(string songpath, int &Id) override;
+    void getAllSongs(vector<songinfo> &songs) override;
+    string getTrackPath(const string &songName) override;
+
+    virtual ~DbSelector();
 };

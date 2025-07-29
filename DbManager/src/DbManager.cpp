@@ -1,6 +1,6 @@
 #include "DbManager.hpp"
 
-IDbFactory* Dbmanager::getDabase(string path,DbType type)
+IDbFactory *Dbmanager::getDabase(string path, DbType type)
 {
 
     switch (type)
@@ -12,5 +12,4 @@ IDbFactory* Dbmanager::getDabase(string path,DbType type)
     default:
         return nullptr;
     }
-
 }

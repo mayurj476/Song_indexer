@@ -12,8 +12,9 @@ public:
 
     virtual void getTrackId(string songpath, int &Id) {};
     virtual void getAllSongs(vector<songinfo> &songs) {};
-    virtual string getTrackPath(const string &songName) {return "";};
+    virtual string getTrackPath(const string &songName) { return ""; };
 
     virtual void toggeleTrackFavstate(const int id, bool state) {};
     virtual void insertSongdetail(tableData &t) {};
+    ~IDbFactory() = default;
 };

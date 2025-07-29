@@ -20,7 +20,6 @@ private:
     void createTables();
 
     DbInserter(string path);
-    ~DbInserter();
 
     DbInserter(const DbInserter &) = delete;
     DbInserter &operator=(const DbInserter &) = delete;
@@ -30,10 +29,12 @@ private:
 
 public:
     static DbInserter *getDbInserter(string path);
+    static void destroyInstance();
     bool openDatabase(string path) override;
     void closeDatabase() override;
     void executequery(string query) override;
 
-    void toggeleTrackFavstate(const int id, bool state)override;
-    void insertSongdetail(tableData &t)override;
+    void toggeleTrackFavstate(const int id, bool state) override;
+    void insertSongdetail(tableData &t) override;
+    virtual ~DbInserter();
 };

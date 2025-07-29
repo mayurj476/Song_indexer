@@ -38,8 +38,7 @@ set(SRC_FILES
 include_directories(${CMAKE_CURRENT_LIST_DIR}/MetadataParser/include)
 
 add_executable(${BINARY_NAME} ${SRC_FILES})
-
-# include this to avoid glib not found and undefinced refrence error 
+ 
 target_include_directories(${BINARY_NAME}
     PRIVATE 
     ${TAGLIB_INCLUDE_DIRS}    

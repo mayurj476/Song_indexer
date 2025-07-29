@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 struct tableData
@@ -15,18 +15,14 @@ struct tableData
    int length;
    int year;
    bool isFav;
-   
 };
 
-struct songinfo{
-string fullpath;
-string trackname;
-string fileName;
-string albumart;
-
-
+struct songinfo
+{
+   string fullpath;
+   string trackname;
+   string fileName;
+   string albumart;
 };
 
-
-
-const string DATABASE_PATH="SongsDataBase.db";
+const string DATABASE_PATH = "SongsDataBase.db";

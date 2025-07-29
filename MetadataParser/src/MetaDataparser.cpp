@@ -5,19 +5,20 @@
 bool MetadataParser::isValidFile(string extension)
 {
     static const unordered_set<string> validExtensions = {
-        ".mp3", ".wav", ".mkv", ".aac", ".m4a",".mp4"};
+        ".mp3", ".wav", ".mkv", ".aac", ".m4a", ".mp4"};
     std::transform(extension.begin(), extension.end(), extension.begin(), ::tolower);
     return validExtensions.count(extension) > 0;
 }
 
-MetadataParser::MetadataParser():
-    m_dbInserter(Dbmanager::getDabase(DATABASE_PATH, Dbmanager::DbType::INSERTER)),
-    m_dbSelector(Dbmanager::getDabase(DATABASE_PATH, Dbmanager::DbType::SELECTOR))
+MetadataParser::MetadataParser() : m_dbInserter(Dbmanager::getDabase(DATABASE_PATH, Dbmanager::DbType::INSERTER)),
+                                   m_dbSelector(Dbmanager::getDabase(DATABASE_PATH, Dbmanager::DbType::SELECTOR))
 {
 }
 
 MetadataParser::~MetadataParser()
 {
+    DbInserter::destroyInstance();
+    DbSelector::destroyInstance();
 }
 
 void MetadataParser::getMetaData(string songpath, string file)
@@ -37,7 +38,6 @@ void MetadataParser::getMetaData(string songpath, string file)
         cout << "comment - \"" << tag->comment() << "\"" << endl;
         cout << "track   - \"" << tag->track() << "\"" << endl;
         cout << "genre   - \"" << tag->genre() << "\"" << endl;
-        
 
         // Prepare data for database insertion
         tableData t;
@@ -55,8 +55,6 @@ void MetadataParser::getMetaData(string songpath, string file)
 
         m_dbInserter->insertSongdetail(t);
     }
-
-
 }
 
 void MetadataParser::getPseudoMetaData(string songpath)
@@ -82,7 +80,7 @@ void MetadataParser::startIndexing(string path)
     fs::path dirPath(path);
     if (!fs::exists(dirPath) || !fs::is_directory(dirPath))
     {
-        cout<<"Invalid directory path\n";
+        cout << "Invalid directory path\n";
         return;
     }
 
