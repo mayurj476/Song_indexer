@@ -48,7 +48,7 @@ target_link_libraries(dbmanager
 # Source files for main application
 set(SRC_FILES
     MetadataParser/src/MetaDataparser.cpp
-    MetadataParser/src/main.cpp
+    main.cpp
 )
 
 add_executable(${BINARY_NAME} ${SRC_FILES})
