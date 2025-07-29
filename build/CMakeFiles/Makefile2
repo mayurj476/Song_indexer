@@ -63,6 +63,7 @@ CMAKE_BINARY_DIR = /home/mayur/CPP/Song_indexer/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/dbmanager.dir/all
 all: CMakeFiles/indexer.dir/all
 .PHONY : all
 
@@ -71,22 +72,49 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/dbmanager.dir/clean
 clean: CMakeFiles/indexer.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/dbmanager.dir
+
+# All Build rule for target.
+CMakeFiles/dbmanager.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mayur/CPP/Song_indexer/build/CMakeFiles --progress-num=1,2,3,4 "Built target dbmanager"
+.PHONY : CMakeFiles/dbmanager.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dbmanager.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayur/CPP/Song_indexer/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/dbmanager.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayur/CPP/Song_indexer/build/CMakeFiles 0
+.PHONY : CMakeFiles/dbmanager.dir/rule
+
+# Convenience name for target.
+dbmanager: CMakeFiles/dbmanager.dir/rule
+.PHONY : dbmanager
+
+# clean rule for target.
+CMakeFiles/dbmanager.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/clean
+.PHONY : CMakeFiles/dbmanager.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/indexer.dir
 
 # All Build rule for target.
-CMakeFiles/indexer.dir/all:
+CMakeFiles/indexer.dir/all: CMakeFiles/dbmanager.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/indexer.dir/build.make CMakeFiles/indexer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/indexer.dir/build.make CMakeFiles/indexer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mayur/CPP/Song_indexer/build/CMakeFiles --progress-num=1,2,3 "Built target indexer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mayur/CPP/Song_indexer/build/CMakeFiles --progress-num=5,6,7 "Built target indexer"
 .PHONY : CMakeFiles/indexer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/indexer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayur/CPP/Song_indexer/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayur/CPP/Song_indexer/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/indexer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mayur/CPP/Song_indexer/build/CMakeFiles 0
 .PHONY : CMakeFiles/indexer.dir/rule

@@ -213,8 +213,19 @@ CMakeFiles/indexer.dir/MetadataParser/src/MetaDataparser.cpp.o: \
  /usr/local/include/taglib/tstringlist.h \
  /usr/local/include/taglib/tbytevectorlist.h \
  /usr/local/include/taglib/audioproperties.h \
- /usr/local/include/taglib/tag.h /usr/include/c++/13/unordered_set \
+ /usr/local/include/taglib/tag.h \
+ /home/mayur/CPP/Song_indexer/DbManager/include/DbManager.hpp \
+ /home/mayur/CPP/Song_indexer/DbManager/include/DbInserter.hpp \
+ /usr/include/sqlite3.h \
+ /home/mayur/CPP/Song_indexer/DbManager/include/DbUtils.hpp \
+ /usr/include/c++/13/mutex /usr/include/c++/13/bits/std_mutex.h \
+ /usr/include/c++/13/bits/unique_lock.h \
+ /home/mayur/CPP/Song_indexer/DbManager/include/IDbFactory.hpp \
+ /home/mayur/CPP/Song_indexer/DbManager/include/DbSelector.hpp \
+ /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
- /usr/include/c++/13/bits/enable_special_members.h
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/thread /usr/include/c++/13/bits/std_thread.h \
+ /usr/include/c++/13/bits/this_thread_sleep.h

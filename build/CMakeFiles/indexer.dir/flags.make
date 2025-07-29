@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/mayur/CPP/Song_indexer/MetadataParser/include -I/usr/local/include/taglib
+CXX_INCLUDES = -I/home/mayur/CPP/Song_indexer/MetadataParser/include -I/usr/local/include/taglib -I/home/mayur/CPP/Song_indexer/DbManager/include
 
 CXX_FLAGS = -g -std=gnu++17
 

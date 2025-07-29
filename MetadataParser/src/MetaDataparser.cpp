@@ -1,16 +1,29 @@
 #include "MetaDataparser.hpp"
 #include <unordered_set>
+#include <thread>
 
 bool MetadataParser::isValidFile(string extension)
 {
     static const unordered_set<string> validExtensions = {
-        ".mp3", ".wav", ".mkv", ".aac", ".m4a"};
+        ".mp3", ".wav", ".mkv", ".aac", ".m4a",".mp4"};
     std::transform(extension.begin(), extension.end(), extension.begin(), ::tolower);
     return validExtensions.count(extension) > 0;
 }
 
+MetadataParser::MetadataParser():
+    m_dbInserter(Dbmanager::getDabase(DATABASE_PATH, Dbmanager::DbType::INSERTER)),
+    m_dbSelector(Dbmanager::getDabase(DATABASE_PATH, Dbmanager::DbType::SELECTOR))
+{
+}
+
+MetadataParser::~MetadataParser()
+{
+}
+
 void MetadataParser::getMetaData(string songpath, string file)
 {
+    hash<string> hashFn;
+    int id = hashFn(songpath) % 1000000; // Simple hash to
     TagLib::FileRef f(songpath.c_str());
     if (!f.isNull() && f.tag())
     {
@@ -24,7 +37,26 @@ void MetadataParser::getMetaData(string songpath, string file)
         cout << "comment - \"" << tag->comment() << "\"" << endl;
         cout << "track   - \"" << tag->track() << "\"" << endl;
         cout << "genre   - \"" << tag->genre() << "\"" << endl;
+        
+
+        // Prepare data for database insertion
+        tableData t;
+        t.Id = id; // Use the hash as ID
+        t.trackPath = songpath;
+        t.trackName = tag->title().to8Bit(true);
+        t.FileName = file;
+        t.albumart = ""; // Placeholder for album art
+        t.length = f.audioProperties() ? f.audioProperties()->lengthInSeconds() : 0;
+        t.isFav = false; // Default value, can be changed later
+        t.artist = tag->artist().to8Bit(true);
+        t.genre = tag->genre().to8Bit(true);
+        t.album = tag->album().to8Bit(true);
+        t.year = tag->year();
+
+        m_dbInserter->insertSongdetail(t);
     }
+
+
 }
 
 void MetadataParser::getPseudoMetaData(string songpath)
@@ -50,7 +82,8 @@ void MetadataParser::startIndexing(string path)
     fs::path dirPath(path);
     if (!fs::exists(dirPath) || !fs::is_directory(dirPath))
     {
-        throw std::runtime_error("Invalid directory path");
+        cout<<"Invalid directory path\n";
+        return;
     }
 
     for (const auto &entry : fs::recursive_directory_iterator(dirPath))

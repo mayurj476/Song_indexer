@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named dbmanager
+
+# Build rule for target.
+dbmanager: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dbmanager
+.PHONY : dbmanager
+
+# fast build rule for target.
+dbmanager/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/build
+.PHONY : dbmanager/fast
+
+#=============================================================================
 # Target rules for targets named indexer
 
 # Build rule for target.
@@ -128,6 +141,78 @@ indexer: cmake_check_build_system
 indexer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/indexer.dir/build.make CMakeFiles/indexer.dir/build
 .PHONY : indexer/fast
+
+DbManager/src/DbInserter.o: DbManager/src/DbInserter.cpp.o
+.PHONY : DbManager/src/DbInserter.o
+
+# target to build an object file
+DbManager/src/DbInserter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbInserter.cpp.o
+.PHONY : DbManager/src/DbInserter.cpp.o
+
+DbManager/src/DbInserter.i: DbManager/src/DbInserter.cpp.i
+.PHONY : DbManager/src/DbInserter.i
+
+# target to preprocess a source file
+DbManager/src/DbInserter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbInserter.cpp.i
+.PHONY : DbManager/src/DbInserter.cpp.i
+
+DbManager/src/DbInserter.s: DbManager/src/DbInserter.cpp.s
+.PHONY : DbManager/src/DbInserter.s
+
+# target to generate assembly for a file
+DbManager/src/DbInserter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbInserter.cpp.s
+.PHONY : DbManager/src/DbInserter.cpp.s
+
+DbManager/src/DbManager.o: DbManager/src/DbManager.cpp.o
+.PHONY : DbManager/src/DbManager.o
+
+# target to build an object file
+DbManager/src/DbManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbManager.cpp.o
+.PHONY : DbManager/src/DbManager.cpp.o
+
+DbManager/src/DbManager.i: DbManager/src/DbManager.cpp.i
+.PHONY : DbManager/src/DbManager.i
+
+# target to preprocess a source file
+DbManager/src/DbManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbManager.cpp.i
+.PHONY : DbManager/src/DbManager.cpp.i
+
+DbManager/src/DbManager.s: DbManager/src/DbManager.cpp.s
+.PHONY : DbManager/src/DbManager.s
+
+# target to generate assembly for a file
+DbManager/src/DbManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbManager.cpp.s
+.PHONY : DbManager/src/DbManager.cpp.s
+
+DbManager/src/DbSelector.o: DbManager/src/DbSelector.cpp.o
+.PHONY : DbManager/src/DbSelector.o
+
+# target to build an object file
+DbManager/src/DbSelector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbSelector.cpp.o
+.PHONY : DbManager/src/DbSelector.cpp.o
+
+DbManager/src/DbSelector.i: DbManager/src/DbSelector.cpp.i
+.PHONY : DbManager/src/DbSelector.i
+
+# target to preprocess a source file
+DbManager/src/DbSelector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbSelector.cpp.i
+.PHONY : DbManager/src/DbSelector.cpp.i
+
+DbManager/src/DbSelector.s: DbManager/src/DbSelector.cpp.s
+.PHONY : DbManager/src/DbSelector.s
+
+# target to generate assembly for a file
+DbManager/src/DbSelector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dbmanager.dir/build.make CMakeFiles/dbmanager.dir/DbManager/src/DbSelector.cpp.s
+.PHONY : DbManager/src/DbSelector.cpp.s
 
 MetadataParser/src/MetaDataparser.o: MetadataParser/src/MetaDataparser.cpp.o
 .PHONY : MetadataParser/src/MetaDataparser.o
@@ -185,7 +270,17 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... dbmanager"
 	@echo "... indexer"
+	@echo "... DbManager/src/DbInserter.o"
+	@echo "... DbManager/src/DbInserter.i"
+	@echo "... DbManager/src/DbInserter.s"
+	@echo "... DbManager/src/DbManager.o"
+	@echo "... DbManager/src/DbManager.i"
+	@echo "... DbManager/src/DbManager.s"
+	@echo "... DbManager/src/DbSelector.o"
+	@echo "... DbManager/src/DbSelector.i"
+	@echo "... DbManager/src/DbSelector.s"
 	@echo "... MetadataParser/src/MetaDataparser.o"
 	@echo "... MetadataParser/src/MetaDataparser.i"
 	@echo "... MetadataParser/src/MetaDataparser.s"
