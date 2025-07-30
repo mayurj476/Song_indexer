@@ -24,7 +24,7 @@ MetadataParser::~MetadataParser()
 void MetadataParser::getMetaData(string songpath, string file)
 {
     hash<string> hashFn;
-    int id = hashFn(songpath) % 1000000; // Simple hash to
+    int id = hashFn(songpath) % 1000000; 
     TagLib::FileRef f(songpath.c_str());
     if (!f.isNull() && f.tag())
     {
@@ -39,7 +39,7 @@ void MetadataParser::getMetaData(string songpath, string file)
         cout << "track   - \"" << tag->track() << "\"" << endl;
         cout << "genre   - \"" << tag->genre() << "\"" << endl;
 
-        // Prepare data for database insertion
+        
         tableData t;
         t.Id = id; // Use the hash as ID
         t.trackPath = songpath;
@@ -47,7 +47,7 @@ void MetadataParser::getMetaData(string songpath, string file)
         t.FileName = file;
         t.albumart = ""; // Placeholder for album art
         t.length = f.audioProperties() ? f.audioProperties()->lengthInSeconds() : 0;
-        t.isFav = false; // Default value, can be changed later
+        t.isFav = false; 
         t.artist = tag->artist().to8Bit(true);
         t.genre = tag->genre().to8Bit(true);
         t.album = tag->album().to8Bit(true);

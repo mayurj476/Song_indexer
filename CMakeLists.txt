@@ -62,7 +62,6 @@ target_include_directories(${BINARY_NAME}
 target_link_libraries(${BINARY_NAME}
     PRIVATE
         dbmanager
-        stdc++fs           # May not be needed for C++17, depending on compiler
         ${TAGLIB_LIBRARIES}
         z                  # zlib needed by taglib
 )
